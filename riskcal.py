@@ -62,6 +62,7 @@ def get_database(ontology_class, dataset_id):
 
 def get_log_odds (p_data):
     '''fuction for get the log odds estimate corrsesponding to phenotype j'''
+    '''still working'''
     frequency = p_data['concept_frequency']
     log_odds = np.log(frequency/(1-frequency))
     log_odds_list = log_odds.to_list()
@@ -128,7 +129,7 @@ def cal_risk(p_data, database):
 onto = get_ontology("http://purl.obolibrary.org/obo/hp.owl").load()
 obo = onto.get_namespace("http://purl.obolibrary.org/obo/")
 ontology_classes = obo.HP_0000001.descendants()
-d_data = get_ddata(ontology_classes)
+database = get_ddata(ontology_classes, 2)
 p_data = d_data.head()
 
-cal_risk(p_data, d_data)
+cal_risk(p_data, database)
