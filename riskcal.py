@@ -7,9 +7,8 @@ import owlready2
 from pandas import json_normalize
 from owlready2 import *
 
-def get_database(ontology_class, dataset_id):
+def get_database(ontology_class, dataset_id = 2):
     '''function for criterion data base'''
-    dataset_id = 2
     o_list = [] 
     for current_class in ontology_classes:
         hp_id = current_class.name.replace('_', ':')
@@ -70,7 +69,7 @@ def get_log_odds (p_data):
 
 
 def get_indicator_ftn1 (log_odds):
-    '''indicator function equals 1 when log_odds is greater than 0 '''
+    '''indicator function equals 1 when the estimate (log_odds) is greater than 0 '''
     Ind1 = []   
     for i in log_odds:
         if i > 0:
@@ -82,7 +81,7 @@ def get_indicator_ftn1 (log_odds):
         
         
 def get_indicator_ftn2 (log_odds):
-    '''indicator function equals 1 when log_odds is less than 0'''   
+    '''indicator function equals 1 when the estimate (log_odds) is less than 0'''   
     Ind2 = []
     for i in log_odds:
         if i < 0:
